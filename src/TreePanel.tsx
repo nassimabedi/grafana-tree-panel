@@ -254,7 +254,7 @@ function evalTemplateSimple(str: string, values: Map<string, string>): string {
 }
 
 function evalTemplateHandlebars(source: string, values: Map<string, string>): string {
-  var template = Handlebars.compile(source, {
+  let template = Handlebars.compile(source, {
     noEscape: true,
   });
 
@@ -262,7 +262,7 @@ function evalTemplateHandlebars(source: string, values: Map<string, string>): st
 }
 
 export function printPodColumn(jsonText: string, column: string): string {
-  var pod: V1Pod;
+  let pod: V1Pod;
   try {
     pod = ObjectSerializer.deserialize(JSON.parse(jsonText), 'V1Pod');
   } catch (err) {

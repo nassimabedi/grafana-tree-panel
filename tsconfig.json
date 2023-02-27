@@ -1,10 +1,12 @@
 {
   "extends": "./node_modules/@grafana/toolkit/src/config/tsconfig.plugin.json",
   "include": ["src", "types"],
-  "jsx": "react",
+  "jsx": "react-jsx",
   "compilerOptions": {
     "rootDir": "./src",
     "baseUrl": "./src",
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "allowJs": true,
+    "moduleResolution": "node",
   }
 }

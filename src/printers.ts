@@ -55,8 +55,8 @@ export function printPod(pod: V1Pod, now: Date): Map<string, string> {
   let readyContainers = 0;
   let lastRestartDate = zeroDate;
 
-  var reason: string;
-  var statusMessage: string | undefined;
+  let reason: string;
+  let statusMessage: string | undefined;
   reason = String(pod.status.phase);
   statusMessage = pod.status.message;
   if (pod.status.reason !== undefined && pod.status.reason !== '') {
