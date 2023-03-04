@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
+import Box from '@mui/material/Box';
+//import Box from '@material-ui/Box';
 import { Field, FieldType, PanelData, PanelProps, DataFrame, GrafanaTheme2, ArrayVector } from '@grafana/data';
+//import { Field, FieldType, PanelData, PanelProps, DataFrame, ArrayVector } from '@grafana/data';
 import { TreeView, TreeItem } from '@material-ui/lab';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRighticon from '@material-ui/icons/ChevronRight';
@@ -10,6 +13,9 @@ import { TreeOptions, TreeLevelOrderMode, TreeFileldTemplateEngine } from 'types
 //import { ObjectSerializer, V1Pod } from '@kubernetes/client-node';
 import { ObjectSerializer, V1Pod } from './kubernetes_client-node/model/models';
 import { printPod } from 'printers';
+
+
+//import Button from '@mui/material/Button';
 
 export interface Props extends PanelProps<TreeOptions> {}
 
@@ -38,6 +44,8 @@ const getStyles = (theme: GrafanaTheme2) => ({
     overflow: scroll;
   `,
 });
+
+
 
 export const TreePanel: FC<Props> = ({ options, data, width, height }) => {
   Handlebars.registerHelper('printPodColumn', printPodColumn);
@@ -82,11 +90,17 @@ export const TreePanel: FC<Props> = ({ options, data, width, height }) => {
     }
   };
   appendToExpanded(dataItems, options.expandLevel);
-
+  //const [expanded, setExpanded] = React.useState<string[]>([]);
   const [expanded, setExpanded] = React.useState<string[]>(defaultExpanded);
   const handleToggle = (_event: any, nodeIds: React.SetStateAction<string[]>) => {
     setExpanded(nodeIds);
   };
+
+  //const handleExpandClick = () => {
+    //setExpanded((oldExpanded) =>
+     // oldExpanded.length === 0 ? ['1', '5', '6', '7'] : [],
+    //);
+  //};
 
   const loop = (item: DataItem): JSX.Element | undefined => {
     return (
@@ -100,8 +114,15 @@ export const TreePanel: FC<Props> = ({ options, data, width, height }) => {
     );
   };
 
+//Start Nassim
+ // const [expanded, setExpanded] = React.useState<string[]>([]);
+
+
+
   return (
-    <div className={styles.treeBox}>
+    
+    
+    <div className={styles.treeBox}>    
       <TreeView
         className="customTreeView"
         defaultCollapseIcon={<ExpandMoreIcon />}
@@ -110,10 +131,16 @@ export const TreePanel: FC<Props> = ({ options, data, width, height }) => {
         onNodeToggle={handleToggle}
         multiSelect
         aria-label="multi-select"
+        
       >
         {loop(dataItems)}
       </TreeView>
-    </div>
+      <Box sx={{ height: 270, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}>
+      <Box sx={{ mb: 1 }}>
+        </Box>
+    </Box>
+      </div>
+      
   );
 };
 
