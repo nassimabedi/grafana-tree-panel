@@ -108,6 +108,8 @@ export const TreePanel: FC<Props> = ({ options, data, width, height }) => {
         defaultExpandIcon={<ChevronRighticon />}
         expanded={expanded}
         onNodeToggle={handleToggle}
+        multiSelect
+        aria-label="multi-select"
       >
         {loop(dataItems)}
       </TreeView>
